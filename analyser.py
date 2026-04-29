@@ -6,7 +6,7 @@ import os
 from fastapi import HTTPException
 load_dotenv()
 api_key=os.getenv("GEMINI_API_KEY")
-model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash-preview-04-17")
 client = genai.Client(api_key=api_key)
 prompt = """
 You are a payment fraud detection expert specializing in Indian payment apps, 
@@ -87,8 +87,8 @@ def analyze(image_bytes: bytes, content_type: str) -> dict:
         )
         raw=r.text.strip()
         if raw.startswith("```"):
-            raw=raw.strip("\n",1)[1]
-            raw=raw.strip("```",1)[0]
+            raw=raw.split("\n",1)[1]
+            raw=raw.rsplit("```",1)[0]
         result=json.loads(raw)
         return result
     except json.JSONDecodeError:
