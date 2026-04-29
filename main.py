@@ -2,7 +2,7 @@ from fastapi import FastAPI , HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 import analyser
 app = FastAPI()
-app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000","https://fraudshield-frontend.vercel.app/","https://fraudshield-frontend.vercel.app"], allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000","https://fraudshield-frontend.vercel.app"], allow_methods=["*"], allow_headers=["*"])
 @app.get("/")
 def health_check():
     return {"status": "FraudShield backend is running"}
