@@ -6,7 +6,7 @@ import os
 from fastapi import HTTPException
 load_dotenv()
 api_key=os.getenv("GEMINI_API_KEY")
-model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash-preview-04-17")
+model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 client = genai.Client(api_key=api_key)
 prompt = """
 You are a payment fraud detection expert specializing in Indian payment apps, 
